@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sassy’s Wellness Juicery | Drink Bold. Live Vibrant.</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --sassy-green: #76b828;
+            --sassy-orange: #f39200;
+            --sassy-red: #e31e24;
+            --cream: #fdfaf5;
+            --glass: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--cream);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Hero Styling */
+        .hero-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #fdfaf5 0%, #e8f5e9 100%);
+        }
+
+        .btn-sassy {
+            background-color: var(--sassy-green);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: bold;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-sassy:hover {
+            background-color: var(--sassy-orange);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Vibe Buttons */
+        .vibe-btn {
+            border-radius: 50px;
+            margin: 5px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+
+        /* Stock Counter Badge */
+        .stock-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--sassy-red);
+            color: white;
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 50px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success" href="#">Sassy’s Wellness</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#vibe">Pick Your Vibe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bundles">Bundles</a></li>
+                    <li class="nav-item">
+                        <a class="btn btn-sassy ms-lg-3" href="https://wa.me/17584869001?text=Hi%20Sassy!%20I%20want%20to%20order%20some%20fresh%20juice!">
+                            <i class="bi bi-whatsapp"></i> Order Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-3 fw-bold mb-4">Drink <span style="color:var(--sassy-green)">Bold</span>.<br>Live <span style="color:var(--sassy-orange)">Vibrant</span>.</h1>
+                    <p class="lead mb-5 text-muted">Cold-pressed wellness designed to detoxify your liver, kidneys, and body to give you that iconic <strong>Sassy Glow</strong>.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#menu" class="btn btn-sassy shadow">Explore Menu</a>
+                        <a href="#vibe" class="btn btn-outline-success rounded-pill px-4">Find Your Vibe</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="zoom-in">
+                    <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg rounded-5 overflow-hidden" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="3000">
+                                <img src="https://images.unsplash.com/photo-1622597467836-f308529f5573?auto=format&fit=crop&q=80&w=800" class="d-block w-100" alt="Fresh Juice">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <img src="https://images.unsplash.com/photo-1610970881699-44a55874c433?auto=format&fit=crop&q=80&w=800" class="d-block w-100" alt="Fruit Mix">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800" class="d-block w-100" alt="Lifestyle">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="3000">
+                                <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&q=80&w=800" class="d-block w-100" alt="Bottled Wellness">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vibe" class="py-5 text-center bg-white">
+        <div class="container" data-aos="fade-up">
+            <h2 class="fw-bold mb-4">How are we feeling today?</h2>
+            <div class="d-flex justify-content-center flex-wrap">
+                <button class="btn btn-outline-warning vibe-btn" onclick="filterMenu('energy')">🔥 I Need Energy</button>
+                <button class="btn btn-outline-success vibe-btn" onclick="filterMenu('detox')">🌿 Cleanse Me</button>
+                <button class="btn btn-outline-danger vibe-btn" onclick="filterMenu('glow')">✨ Give Me The Glow</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card glass-card h-100 shadow-sm border-0 position-relative">
+                        <span class="stock-badge">Only 4 Left!</span>
+                        <div class="p-4 text-center">
+                            <h3 class="fw-bold text-danger">Red Radiance</h3>
+                            <p class="small text-muted">Beetroot, Red Apple, Carrot, Lemon, Ginger, Celery</p>
+                            <h4 class="fw-bold mb-3">$10.00 <small class="text-muted" style="font-size:0.6em">(250ml)</small></h4>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_xclick">
+                                <input type="hidden" name="business" value="your-email@example.com">
+                                <input type="hidden" name="item_name" value="Red Radiance Juice">
+                                <input type="hidden" name="amount" value="10.00">
+                                <button type="submit" class="btn btn-sassy w-100 mb-2">Buy Now with PayPal</button>
+                            </form>
+                            <a href="https://wa.me/17584869001?text=Order:%20Red%20Radiance" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Order via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card glass-card h-100 shadow-sm border-0">
+                        <div class="p-4 text-center">
+                            <h3 class="fw-bold text-success">Reset Ritual</h3>
+                            <p class="small text-muted">Cucumber, Green Apple, Kale, Celery, Lime, Spring Water</p>
+                            <h4 class="fw-bold mb-3">$10.00</h4>
+                            <button class="btn btn-sassy w-100 mb-2">Buy Now with PayPal</button>
+                            <a href="https://wa.me/17584869001?text=Order:%20Reset%20Ritual" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Order via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card glass-card h-100 shadow-sm border-0">
+                        <span class="stock-badge">Popular!</span>
+                        <div class="p-4 text-center">
+                            <h3 class="fw-bold" style="color:var(--sassy-orange)">Tropic Like It's Hott</h3>
+                            <p class="small text-muted">Pineapple, Passion Fruit, Cucumber, Ginger</p>
+                            <h4 class="fw-bold mb-3">$10.00</h4>
+                            <button class="btn btn-sassy w-100 mb-2">Buy Now with PayPal</button>
+                            <a href="https://wa.me/17584869001?text=Order:%20Tropic%20Like%20Its%20Hott" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Order via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bundles" class="py-5 bg-dark text-white text-center">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="fw-bold mb-4">Juice Bundles</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="p-5 border border-success rounded-5">
+                        <h3>7-Day Glow Kit</h3>
+                        <p>One juice per day + 1 Ginger Booster Shot</p>
+                        <h2 class="display-5 fw-bold text-success">$65.00</h2>
+                        <button class="btn btn-sassy btn-lg mt-3">Grab This Bundle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white text-center">
+        <div class="container" data-aos="fade-up">
+            <h4 class="mb-4">Follow the Glow @SassysWellness</h4>
+            <div class="row g-2">
+                <div class="col-3"><div class="bg-light" style="height:200px"></div></div>
+                <div class="col-3"><div class="bg-light" style="height:200px"></div></div>
+                <div class="col-3"><div class="bg-light" style="height:200px"></div></div>
+                <div class="col-3"><div class="bg-light" style="height:200px"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5 glass-nav mt-5">
+        <div class="container text-center">
+            <h2 class="fw-bold">Sassy's</h2>
+            <p class="text-muted">758-486-9001 | Castries, Saint Lucia</p>
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <a href="#" class="fs-3 text-success"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="fs-3 text-success"><i class="bi bi-facebook"></i></a>
+                <a href="https://wa.me/17584869001" class="fs-3 text-success"><i class="bi bi-whatsapp"></i></a>
+            </div>
+            <hr>
+            <p class="small text-muted">&copy; 2026 Sassy’s Wellness Juicery. Designed for the Sassy Glow.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        function filterMenu(vibe) {
+            alert("Sassy Tip: Picking the '" + vibe + "' vibe will now highlight the best juices for your mood below!");
+            // This would trigger a filter animation in a full production site
+        }
+    </script>
+</body>
+</html>
