@@ -122,7 +122,8 @@
             </div>
         </div>
     </nav>
-
+    
+<!-- HERO -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -156,67 +157,80 @@
         </div>
     </section>
 
+    <!-- VIBE -->
     <section id="vibe" class="py-5 text-center bg-white">
-        <div class="container" data-aos="fade-up">
-            <h2 class="fw-bold mb-4">How are we feeling today?</h2>
-            <div class="d-flex justify-content-center flex-wrap">
-                <button class="btn btn-outline-warning vibe-btn" onclick="filterMenu('energy')">🔥 I Need Energy</button>
-                <button class="btn btn-outline-success vibe-btn" onclick="filterMenu('detox')">🌿 Cleanse Me</button>
-                <button class="btn btn-outline-danger vibe-btn" onclick="filterMenu('glow')">✨ Give Me The Glow</button>
-            </div>
+    <div class="container" data-aos="fade-up">
+        <h2 class="fw-bold mb-4">How are we feeling today?</h2>
+        <div class="d-flex justify-content-center flex-wrap gap-2">
+            <a href="#energy-section" class="btn btn-outline-warning vibe-btn">🔥 Energy</a>
+            <a href="#detox-section" class="btn btn-outline-success vibe-btn">🌿 Detox</a>
+            <a href="#glow-section" class="btn btn-outline-danger vibe-btn">✨ Glow</a>
+            <a href="#refresh-section" class="btn btn-outline-info vibe-btn">🧊 Refresh</a>
+            <a href="#immunity-section" class="btn btn-outline-primary vibe-btn">🛡️ Immunity</a>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- MENU -->
     <section id="menu" class="py-5">
-        <div class="container">
+    <div class="container">
+        
+        <div id="energy-section" class="mb-5" data-aos="fade-up">
+            <div class="alert alert-warning border-0 glass-card">
+                <strong>Sassy Tip:</strong> Feeling a midday slump? These zesty blends are designed to kickstart your metabolism without the caffeine crash!
+            </div>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="card glass-card h-100 shadow-sm border-0 position-relative">
-                        <span class="stock-badge">Only 4 Left!</span>
-                        <div class="p-4 text-center">
-                            <h3 class="fw-bold text-danger">Red Radiance</h3>
-                            <p class="small text-muted">Beetroot, Red Apple, Carrot, Lemon, Ginger, Celery</p>
-                            <h4 class="fw-bold mb-3">$10.00 <small class="text-muted" style="font-size:0.6em">(250ml)</small></h4>
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_xclick">
-                                <input type="hidden" name="business" value="your-email@example.com">
-                                <input type="hidden" name="item_name" value="Red Radiance Juice">
-                                <input type="hidden" name="amount" value="10.00">
-                                <button type="submit" class="btn btn-sassy w-100 mb-2">Buy Now with PayPal</button>
-                            </form>
-                            <a href="https://wa.me/17584869001?text=Order:%20Red%20Radiance" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Order via WhatsApp</a>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card glass-card h-100 shadow-sm border-0 position-relative p-4 text-center">
+                        <span class="stock-badge">High Energy!</span>
+                        <h3 class="fw-bold text-warning">Tropic Like It's Hott</h3>
+                        <p class="small text-muted">Pineapple, Passion Fruit, Cucumber, Ginger</p>
+                        <h4 class="fw-bold mb-3">$10.00</h4>
+                        <button class="btn btn-sassy w-100 mb-2">Buy Now</button>
+                        <a href="#vibe" class="text-decoration-none small text-muted"><i class="bi bi-arrow-up-circle"></i> Back to Top</a>
                     </div>
                 </div>
-
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card glass-card h-100 shadow-sm border-0">
-                        <div class="p-4 text-center">
-                            <h3 class="fw-bold text-success">Reset Ritual</h3>
-                            <p class="small text-muted">Cucumber, Green Apple, Kale, Celery, Lime, Spring Water</p>
-                            <h4 class="fw-bold mb-3">$10.00</h4>
-                            <button class="btn btn-sassy w-100 mb-2">Buy Now with PayPal</button>
-                            <a href="https://wa.me/17584869001?text=Order:%20Reset%20Ritual" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Order via WhatsApp</a>
-                        </div>
-                    </div>
                 </div>
+        </div>
 
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card glass-card h-100 shadow-sm border-0">
-                        <span class="stock-badge">Popular!</span>
-                        <div class="p-4 text-center">
-                            <h3 class="fw-bold" style="color:var(--sassy-orange)">Tropic Like It's Hott</h3>
-                            <p class="small text-muted">Pineapple, Passion Fruit, Cucumber, Ginger</p>
-                            <h4 class="fw-bold mb-3">$10.00</h4>
-                            <button class="btn btn-sassy w-100 mb-2">Buy Now with PayPal</button>
-                            <a href="https://wa.me/17584869001?text=Order:%20Tropic%20Like%20Its%20Hott" class="btn btn-outline-dark btn-sm w-100 rounded-pill">Order via WhatsApp</a>
-                        </div>
+        <div id="detox-section" class="mb-5" data-aos="fade-up">
+            <div class="alert alert-success border-0 glass-card">
+                <strong>Sassy Tip:</strong> Flush out the toxins! This deep green blend works wonders for your liver and digestive tract.
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card glass-card h-100 shadow-sm border-0 p-4 text-center">
+                        <h3 class="fw-bold text-success">Reset Ritual</h3>
+                        <p class="small text-muted">Kale, Spinach, Cucumber, Green Apple, Lemon</p>
+                        <h4 class="fw-bold mb-3">$10.00</h4>
+                        <button class="btn btn-sassy w-100 mb-2">Buy Now</button>
+                        <a href="#vibe" class="text-decoration-none small text-muted"><i class="bi bi-arrow-up-circle"></i> Back to Top</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
+        <div id="glow-section" class="mb-5" data-aos="fade-up">
+            <div class="alert alert-danger border-0 glass-card">
+                <strong>Sassy Tip:</strong> Get that skin-lit-from-within look. Rich in antioxidants to fight inflammation and brighten your complexion.
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card glass-card h-100 shadow-sm border-0 p-4 text-center">
+                        <h3 class="fw-bold text-danger">Red Radiance</h3>
+                        <p class="small text-muted">Beetroot, Carrot, Apple, Ginger</p>
+                        <h4 class="fw-bold mb-3">$10.00</h4>
+                        <button class="btn btn-sassy w-100 mb-2">Buy Now</button>
+                        <a href="#vibe" class="text-decoration-none small text-muted"><i class="bi bi-arrow-up-circle"></i> Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- BUNDLES -->
     <section id="bundles" class="py-5 bg-dark text-white text-center">
         <div class="container" data-aos="zoom-in">
             <h2 class="fw-bold mb-4">Juice Bundles</h2>
@@ -233,6 +247,7 @@
         </div>
     </section>
 
+    <!-- SOCIAL PROOF -->
     <section class="py-5 bg-white text-center">
         <div class="container" data-aos="fade-up">
             <h4 class="mb-4">Follow the Glow @SassysWellness</h4>
@@ -271,6 +286,22 @@
             alert("Sassy Tip: Picking the '" + vibe + "' vibe will now highlight the best juices for your mood below!");
             // This would trigger a filter animation in a full production site
         }
+
+    
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80, // Adjust for sticky navbar height
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     </script>
 </body>
 </html>
