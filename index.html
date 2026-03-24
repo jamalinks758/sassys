@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sassy's Wellness Juicery | Drink Bold. Live Vibrant.</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --green-dark: #1a6b1a;
+      --green-mid: #2d9c2d;
+      --green-light: #4caf50;
+      --orange: #f5a623;
+      --orange-deep: #e07b00;
+      --red-fruit: #d64e2b;
+      --yellow: #f9e03b;
+      --cream: #fdf8ee;
+      --white: #ffffff;
+      --text-dark: #1a2e1a;
+      --text-mid: #3d5a3d;
+    }
+
+    /* ===== THEME SWITCHER ===== */
+    body.theme-tropical {
+      --green-dark: #006837;
+      --green-mid: #00a65a;
+      --orange: #ff6b35;
+      --cream: #fff9f0;
+    }
+    body.theme-detox {
+      --green-dark: #2c5f2e;
+      --green-mid: #5a9e5c;
+      --orange: #a8c256;
+      --cream: #f0f7f0;
+    }
+    body.theme-citrus {
+      --green-dark: #b5451b;
+      --green-mid: #e8733a;
+      --orange: #ffc107;
+      --cream: #fffde7;
+    }
+
+    * { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: linear-gradient(135deg, var(--green-dark), #0d4a0d);
+      box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+      padding: 0.6rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+    }
+    .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      color: var(--orange) !important;
+      font-size: 1.6rem;
+      text-shadow: 1px 1px 0 #000;
+    }
+    .nav-link {
+      color: #d8f5d8 !important;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--orange) !important; }
+    .navbar-toggler { border-color: var(--orange); }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f5a623' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .btn-order-nav {
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-weight: 800;
+      border: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn-order-nav:hover { background: var(--orange-deep); transform: scale(1.05); color: #fff; }
+
+    /* ===== THEME PICKER ===== */
+    .theme-bar {
+      background: var(--green-dark);
+      text-align: center;
+      padding: 6px;
+      font-size: 0.8rem;
+      color: #cfeecf;
+    }
+    .theme-bar span { margin-right: 6px; }
+    .vibe-btn {
+      border: 2px solid transparent;
+      border-radius: 30px;
+      padding: 3px 14px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 2px;
+    }
+    .vibe-btn.tropical { background:#00a65a; color:#fff; }
+    .vibe-btn.detox    { background:#5a9e5c; color:#fff; }
+    .vibe-btn.citrus   { background:#e8733a; color:#fff; }
+    .vibe-btn:hover { transform: scale(1.08); box-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+
+    /* ===== HERO ===== */
+    .hero-section {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #155015 40%, #0e3d0e 100%);
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content:'';
+      position:absolute; inset:0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 30px;
+      padding: 4px 16px;
+      margin-bottom: 14px;
+      animation: pulse-badge 2s infinite;
+    }
+    @keyframes pulse-badge {
+      0%,100%{box-shadow:0 0 0 0 rgba(245,166,35,0.5)}
+      50%{box-shadow:0 0 0 10px rgba(245,166,35,0)}
+    }
+    .hero-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+    .hero-title span { color: var(--orange); }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: #c8f5c8;
+      max-width: 520px;
+      font-weight: 600;
+    }
+    .btn-hero-main {
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50px;
+      padding: 14px 38px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border: none;
+      box-shadow: 0 6px 20px rgba(245,166,35,0.5);
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+    .btn-hero-main:hover { transform: translateY(-3px) scale(1.04); background: var(--orange-deep); color:#fff; }
+    .btn-hero-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all 0.25s;
+      text-decoration: none;
+    }
+    .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); border-color:#fff; color:#fff; }
+    .hero-fruits {
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 1;
+      animation: float-fruits 4s ease-in-out infinite;
+      filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.4));
+    }
+    @keyframes float-fruits {
+      0%,100%{transform:translateY(0) rotate(-3deg)}
+      50%{transform:translateY(-18px) rotate(3deg)}
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-size: 1.4rem;
+      animation: bounce-arrow 1.5s infinite;
+    }
+    @keyframes bounce-arrow {
+      0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(10px)}
+    }
+
+    /* ===== MARQUEE STRIP ===== */
+    .marquee-strip {
+      background: var(--orange);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+    .marquee-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee-scroll 22s linear infinite;
+    }
+    .marquee-inner span { padding: 0 30px; }
+    @keyframes marquee-scroll {
+      0%{transform:translateX(0)}
+      100%{transform:translateX(-50%)}
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--green-dark);
+      line-height: 1.15;
+    }
+    .section-pill {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 30px;
+      padding: 3px 14px;
+      margin-bottom: 10px;
+    }
+    .divider-leaf {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0 30px;
+    }
+    .divider-leaf hr { flex:1; border-color: var(--green-mid); opacity:0.3; }
+
+    /* ===== CAROUSEL ===== */
+    .juice-carousel-section { background: var(--green-dark); padding: 60px 0; }
+    .carousel-item img {
+      object-fit: cover;
+      height: 420px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    .carousel-caption-custom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      padding: 20px 30px;
+      border-radius: 0 0 20px 20px;
+    }
+    .carousel-caption-custom h4 { font-family:'Fredoka One',cursive; color:#fff; font-size:1.6rem; margin:0; }
+    .carousel-caption-custom p { color:#ddd; font-size:0.9rem; margin:0; }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+      background-color: var(--orange);
+      border-radius: 50%;
+      padding: 20px;
+      background-size: 50%;
+    }
+
+    /* ===== STOCK COUNTER ===== */
+    .stock-counter {
+      background: #fff3cd;
+      border: 2px solid var(--orange);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #856404;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .stock-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #e74c3c;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink { 50%{opacity:0} }
+
+    /* ===== JUICE CARDS ===== */
+    .juice-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+    .juice-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    }
+    .juice-card-img {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .juice-card-badge {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--green-mid);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+    .juice-card-body { padding: 20px; }
+    .juice-card-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.35rem;
+      color: var(--green-dark);
+    }
+    .juice-card-ingredients {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .juice-card-price {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      color: var(--orange);
+    }
+    .btn-order-card {
+      background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 22px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: all 0.25s;
+      width: 100%;
+    }
+    .btn-order-card:hover { background: linear-gradient(135deg, var(--orange), var(--orange-deep)); color:#fff; transform:scale(1.03); }
+    .benefit-tag {
+      display: inline-block;
+      background: #e8f5e9;
+      color: var(--green-dark);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin: 2px;
+    }
+
+    /* ===== SIZE PRICING ===== */
+    .pricing-table {
+      background: var(--green-dark);
+      border-radius: 16px;
+      padding: 20px;
+      color: #fff;
+    }
+    .pricing-table h5 { font-family:'Fredoka One',cursive; color:var(--orange); font-size:1.4rem; }
+    .size-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 0;
+    }
+    .size-row:last-child { border-bottom: none; }
+
+    /* ===== BUNDLES ===== */
+    .bundle-card {
+      background: linear-gradient(135deg, #1a6b1a, #0d4a0d);
+      border-radius: 20px;
+      padding: 30px;
+      color: #fff;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .bundle-card:hover { transform: translateY(-6px); }
+    .bundle-card::before {
+      content:'';
+      position:absolute; top:-40px; right:-40px;
+      width:120px; height:120px;
+      background: rgba(255,255,255,0.05);
+      border-radius:50%;
+    }
+    .bundle-popular {
+      position:absolute; top:14px; right:14px;
+      background: var(--orange);
+      color:#fff;
+      font-size:0.7rem;
+      font-weight:800;
+      border-radius:20px;
+      padding:3px 12px;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .bundle-title { font-family:'Fredoka One',cursive; font-size:1.5rem; color:var(--orange); }
+    .bundle-price { font-family:'Fredoka One',cursive; font-size:2.2rem; color:#fff; }
+    .bundle-save { font-size:0.8rem; color:#90ee90; font-weight:700; }
+    .btn-bundle {
+      background: var(--orange);
+      color:#fff;
+      border:none;
+      border-radius:50px;
+      padding:10px 28px;
+      font-weight:800;
+      transition:all 0.25s;
+      width:100%;
+      margin-top:auto;
+    }
+    .btn-bundle:hover { background:#fff; color:var(--green-dark); }
+
+    /* ===== WHY US ===== */
+    .why-section { background: var(--cream); }
+    .why-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.3s;
+      height: 100%;
+    }
+    .why-card:hover { transform: translateY(-6px); }
+    .why-icon {
+      font-size: 2.8rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .why-card h5 { font-family:'Fredoka One',cursive; color:var(--green-dark); font-size:1.3rem; }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-section { background: linear-gradient(135deg, #0d4a0d, #1a6b1a); }
+    .testimonial-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 28px;
+      height: 100%;
+    }
+    .testimonial-card .stars { color: var(--orange); font-size: 1.1rem; }
+    .testimonial-card p { color: #d4f0d4; font-style: italic; font-size: 0.95rem; }
+    .testimonial-card .reviewer { color: var(--orange); font-weight: 700; font-size: 0.9rem; }
+    .testimonial-avatar { font-size: 2rem; margin-bottom: 10px; }
+
+    /* ===== OFFER SECTION ===== */
+    .offer-section {
+      background: linear-gradient(135deg, var(--orange), #c96800);
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .offer-section::before {
+      content:'🍊';
+      position:absolute; top:-20px; left:-20px;
+      font-size:8rem; opacity:0.1;
+    }
+    .offer-section::after {
+      content:'🍉';
+      position:absolute; bottom:-20px; right:-20px;
+      font-size:8rem; opacity:0.1;
+    }
+    .offer-section h2 { font-family:'Pacifico',cursive; font-size:clamp(2rem,5vw,3.5rem); }
+    .offer-timer {
+      font-family:'Fredoka One',cursive;
+      font-size:2.5rem;
+      letter-spacing:0.05em;
+    }
+    .btn-offer {
+      background:#fff;
+      color: var(--orange-deep);
+      border:none;
+      border-radius:50px;
+      padding:14px 42px;
+      font-size:1.1rem;
+      font-weight:800;
+      transition:all 0.25s;
+      text-decoration:none;
+      display:inline-block;
+    }
+    .btn-offer:hover { transform:scale(1.05); background:var(--green-dark); color:#fff; }
+
+    /* ===== INSTAGRAM SECTION ===== */
+    .insta-section { background: #fff; }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .insta-cell {
+      aspect-ratio:1;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:3rem;
+      cursor:pointer;
+      transition:transform 0.3s, filter 0.3s;
+      position:relative;
+      overflow:hidden;
+    }
+    .insta-cell:hover { transform:scale(1.05); filter:brightness(0.85); }
+    .insta-overlay {
+      position:absolute; inset:0;
+      background:rgba(0,0,0,0);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-size:1.3rem; font-weight:800;
+      transition:background 0.3s;
+    }
+    .insta-cell:hover .insta-overlay { background:rgba(0,0,0,0.4); }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta-section {
+      background: var(--green-dark);
+      text-align: center;
+      padding: 90px 20px;
+      position: relative;
+    }
+    .final-cta-section h2 { font-family:'Pacifico',cursive; color:#fff; font-size:clamp(2rem,5vw,3.5rem); }
+    .final-cta-section p { color:#b8e8b8; font-size:1.1rem; max-width:500px; margin: 10px auto 30px; }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section { background: var(--cream); }
+    .contact-card {
+      background:#fff;
+      border-radius:20px;
+      padding:30px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+      text-align:center;
+      transition:transform 0.3s;
+      height:100%;
+    }
+    .contact-card:hover { transform:translateY(-5px); }
+    .contact-card .icon { font-size:2.5rem; margin-bottom:10px; display:block; }
+    .contact-card h5 { font-family:'Fredoka One',cursive; color:var(--green-dark); font-size:1.2rem; }
+    .trust-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#e8f5e9;
+      border-radius:30px;
+      padding:6px 16px;
+      font-size:0.8rem;
+      font-weight:700;
+      color:var(--green-dark);
+      margin:4px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #0a2e0a;
+      color: #8bc88b;
+      padding: 50px 0 20px;
+    }
+    .footer h5 { font-family:'Fredoka One',cursive; color:var(--orange); font-size:1.2rem; }
+    .footer a { color:#8bc88b; text-decoration:none; font-size:0.9rem; transition:color 0.2s; }
+    .footer a:hover { color:var(--orange); }
+    .social-icon {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:42px; height:42px;
+      border-radius:50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      color:#fff;
+      font-size:1.2rem;
+      transition:all 0.25s;
+      margin:3px;
+      text-decoration:none;
+    }
+    .social-icon:hover { transform:scale(1.15); color:#fff; }
+    .social-icon.whatsapp { background:#25d366; border-color:#25d366; }
+    .social-icon.instagram { background:linear-gradient(135deg,#833ab4,#fd1d1d,#f77737); border-color:transparent; }
+    .social-icon.facebook { background:#1877f2; border-color:#1877f2; }
+    .social-icon.tiktok { background:#000; border-color:#333; }
+    .footer-brand { font-family:'Pacifico',cursive; font-size:2rem; color:var(--orange); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; margin-top:30px; font-size:0.8rem; }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position:fixed; bottom:24px; right:24px;
+      background:#25d366;
+      color:#fff;
+      border-radius:50%;
+      width:60px; height:60px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.8rem;
+      box-shadow:0 6px 20px rgba(37,211,102,0.5);
+      z-index:9998;
+      animation:wa-pulse 2.5s infinite;
+      text-decoration:none;
+      transition:transform 0.2s;
+    }
+    .wa-float:hover { transform:scale(1.12); color:#fff; }
+    @keyframes wa-pulse {
+      0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}
+      50%{box-shadow:0 0 0 14px rgba(37,211,102,0)}
+    }
+
+    /* ===== GENERAL UTILS ===== */
+    .section-pad { padding: 80px 0; }
+    .green-text { color: var(--green-dark); }
+    .orange-text { color: var(--orange); }
+    .bg-green-section { background: #f2faf2; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px){
+      .hero-section { min-height: 70vh; }
+      .hero-fruits { font-size: 4rem; }
+      .insta-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== THEME / VIBE BAR ===== -->
+<div class="theme-bar">
+  <span>🎨 Pick Your Vibe:</span>
+  <button class="vibe-btn tropical" onclick="setTheme('tropical')">🌴 Tropical Rush</button>
+  <button class="vibe-btn detox" onclick="setTheme('detox')">🥬 Detox Mode</button>
+  <button class="vibe-btn citrus" onclick="setTheme('citrus')">🍊 Citrus Fire</button>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">🥤 Sassy's</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#juices">Our Juices</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Menu</a>
+          <ul class="dropdown-menu" style="background:#0d4a0d; border:1px solid rgba(255,255,255,0.1);">
+            <li><a class="dropdown-item text-light" href="#juices">Single Juices</a></li>
+            <li><a class="dropdown-item text-light" href="#bundles">Juice Bundles</a></li>
+            <li><a class="dropdown-item text-light" href="#pricing">Pricing</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#why-us">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <a href="#order" class="btn btn-order-nav ms-2">Order Now 🛒</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section" id="home">
+  <div class="container py-5">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7" data-aos="fade-right" data-aos-duration="900">
+        <span class="hero-badge">✨ Fresh · Cold-Pressed · Detoxifying</span>
+        <h1 class="hero-title mb-3">
+          Drink Bold.<br><span>Live Vibrant.</span>
+        </h1>
+        <p class="hero-subtitle mb-4">
+          Real fruit. Real healing. Real results. Every bottle of Sassy's is cold-pressed with nature's finest — crafted to detoxify your liver, kidneys, and soul. Your glow starts here. 🌿
+        </p>
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a href="#juices" class="btn-hero-main">🛒 Shop Our Juices</a>
+          <a href="#why-us" class="btn-hero-secondary">What's Inside? →</a>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="trust-badge"><i class="bi bi-check-circle-fill"></i> 100% Natural</span>
+          <span class="trust-badge"><i class="bi bi-check-circle-fill"></i> No Preservatives</span>
+          <span class="trust-badge"><i class="bi bi-check-circle-fill"></i> Cold-Pressed</span>
+          <span class="trust-badge"><i class="bi bi-check-circle-fill"></i> Detox Certified</span>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-duration="900">
+        <div class="hero-fruits">🍍🍊🍉🥝</div>
+        <div class="mt-3">
+          <div class="stock-counter mx-auto">
+            <div class="stock-dot"></div>
+            🔥 <span id="stock-count">Only 14 bottles left today!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><i class="bi bi-chevron-double-down"></i></div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-strip">
+  <div class="marquee-inner" id="marqueeInner">
+    <span>🍍 Pineapple Power</span><span>🍊 Citrus Cleanse</span><span>🥬 Kale Kickstart</span>
+    <span>🍉 Watermelon Glow</span><span>🥕 Carrot Clarity</span><span>🌿 Detox Daily</span>
+    <span>🍋 Lemon Zest</span><span>🥒 Cucumber Cool</span><span>🌱 Live Vibrant</span>
+    <span>🍍 Pineapple Power</span><span>🍊 Citrus Cleanse</span><span>🥬 Kale Kickstart</span>
+    <span>🍉 Watermelon Glow</span><span>🥕 Carrot Clarity</span><span>🌿 Detox Daily</span>
+    <span>🍋 Lemon Zest</span><span>🥒 Cucumber Cool</span><span>🌱 Live Vibrant</span>
+  </div>
+</div>
+
+<!-- ===== CAROUSEL ===== -->
+<section class="juice-carousel-section">
+  <div class="container" data-aos="fade-up">
+    <div class="text-center mb-4">
+      <span class="section-pill">🎬 Fresh Vibes</span>
+      <h2 class="section-title text-white">See the Sassy Difference</h2>
+    </div>
+    <div id="juiceCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div style="background:linear-gradient(135deg,#d64e2b,#8b0000); height:420px; border-radius:20px; display:flex; align-items:center; justify-content:center; position:relative;">
+            <div style="font-size:10rem; animation:float-fruits 3s ease-in-out infinite;">🍎🥕</div>
+            <div class="carousel-caption-custom">
+              <h4>Red Radiance</h4>
+              <p>Beetroot · Red Apple · Carrot · Lemon · Ginger · Celery · Spring Water</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div style="background:linear-gradient(135deg,#e07b00,#b35900); height:420px; border-radius:20px; display:flex; align-items:center; justify-content:center; position:relative;">
+            <div style="font-size:10rem; animation:float-fruits 3s ease-in-out infinite;">🥕🍍</div>
+            <div class="carousel-caption-custom">
+              <h4>Vital Amor</h4>
+              <p>Carrots · Pineapple · Turmeric · Ginger · Parsley · Lemon · Black Pepper</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div style="background:linear-gradient(135deg,#1a6b1a,#0d4a0d); height:420px; border-radius:20px; display:flex; align-items:center; justify-content:center; position:relative;">
+            <div style="font-size:10rem; animation:float-fruits 3s ease-in-out infinite;">🥒🥬</div>
+            <div class="carousel-caption-custom">
+              <h4>Reset Ritual</h4>
+              <p>Cucumber · Green Apple · Kale · Celery · Lemon/Lime · Spring Water</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div style="background:linear-gradient(135deg,#7b2d8b,#4a1260); height:420px; border-radius:20px; display:flex; align-items:center; justify-content:center; position:relative;">
+            <div style="font-size:10rem; animation:float-fruits 3s ease-in-out infinite;">🫐🍍</div>
+            <div class="carousel-caption-custom">
+              <h4>Cabbage Citrus Glow</h4>
+              <p>Purple Cabbage · Pineapple · Cucumber · Ginger</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#juiceCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#juiceCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+      <div class="carousel-indicators mt-2">
+        <button type="button" data-bs-target="#juiceCarousel" data-bs-slide-to="0" class="active" style="background:var(--orange)"></button>
+        <button type="button" data-bs-target="#juiceCarousel" data-bs-slide-to="1" style="background:var(--orange)"></button>
+        <button type="button" data-bs-target="#juiceCarousel" data-bs-slide-to="2" style="background:var(--orange)"></button>
+        <button type="button" data-bs-target="#juiceCarousel" data-bs-slide-to="3" style="background:var(--orange)"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JUICE MENU ===== -->
+<section class="section-pad" id="juices" style="background:var(--cream);">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-pill">🧃 Our Signature Blends</span>
+      <h2 class="section-title">Find Your Glow Juice</h2>
+      <div class="divider-leaf"><hr/><span>🌿</span><hr/></div>
+      <p class="text-muted" style="max-width:560px; margin:0 auto;">Every bottle is designed to detoxify your liver, kidneys, and body — giving you that Sassy glow from the inside out. ✨</p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Red Radiance -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="juice-card">
+          <div class="juice-card-img" style="background:linear-gradient(135deg,#ffe0e0,#ffc8b8);">
+            <span>🍎🥕</span>
+            <div class="juice-card-badge">Bestseller</div>
+          </div>
+          <div class="juice-card-body">
+            <h4 class="juice-card-title">Red Radiance</h4>
+            <p class="juice-card-ingredients">Beetroot · Red Apple · Carrot · Lemon · Ginger · Celery · Spring Water</p>
+            <div class="mb-2">
+              <span class="benefit-tag">🫀 Heart Health</span>
+              <span class="benefit-tag">⚡ Energy Boost</span>
+              <span class="benefit-tag">🩸 Blood Cleanser</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="juice-card-price">From $8</span>
+              <span class="stock-counter" style="font-size:0.7rem; padding:4px 10px;"><div class="stock-dot"></div> 9 left</span>
+            </div>
+            <button class="btn-order-card" onclick="orderWhatsApp('Red Radiance')">🛒 Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vital Amor -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="juice-card">
+          <div class="juice-card-img" style="background:linear-gradient(135deg,#fff3cd,#ffe0a0);">
+            <span>🥕🍍</span>
+            <div class="juice-card-badge" style="background:var(--orange)">Anti-Inflammatory</div>
+          </div>
+          <div class="juice-card-body">
+            <h4 class="juice-card-title">Vital Amor</h4>
+            <p class="juice-card-ingredients">Carrots · Pineapple/Grapefruit · Turmeric · Ginger · Parsley · Lemon · Black Pepper</p>
+            <div class="mb-2">
+              <span class="benefit-tag">🔥 Anti-Inflam</span>
+              <span class="benefit-tag">👁️ Eye Health</span>
+              <span class="benefit-tag">🛡️ Immunity</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="juice-card-price">From $8</span>
+              <span class="stock-counter" style="font-size:0.7rem; padding:4px 10px;"><div class="stock-dot"></div> 12 left</span>
+            </div>
+            <button class="btn-order-card" onclick="orderWhatsApp('Vital Amor')">🛒 Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reset Ritual -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="juice-card">
+          <div class="juice-card-img" style="background:linear-gradient(135deg,#d4f5d4,#b8e8b8);">
+            <span>🥒🥬</span>
+            <div class="juice-card-badge">Detox King</div>
+          </div>
+          <div class="juice-card-body">
+            <h4 class="juice-card-title">Reset Ritual</h4>
+            <p class="juice-card-ingredients">Cucumber · Green Apple · Kale · Celery · Lemon/Lime · Spring Water</p>
+            <div class="mb-2">
+              <span class="benefit-tag">🫧 Deep Detox</span>
+              <span class="benefit-tag">💧 Hydration</span>
+              <span class="benefit-tag">🌿 Alkalizing</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="juice-card-price">From $8</span>
+              <span class="stock-counter" style="font-size:0.7rem; padding:4px 10px;"><div class="stock-dot"></div> 7 left</span>
+            </div>
+            <button class="btn-order-card" onclick="orderWhatsApp('Reset Ritual')">🛒 Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cabbage Citrus Glow -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="juice-card">
+          <div class="juice-card-img" style="background:linear-gradient(135deg,#e8d5f5,#d4a8f0);">
+            <span>🫐🍍</span>
+            <div class="juice-card-badge" style="background:#7b2d8b;">Gut Glow</div>
+          </div>
+          <div class="juice-card-body">
+            <h4 class="juice-card-title">Cabbage Citrus Glow</h4>
+            <p class="juice-card-ingredients">Purple Cabbage · Pineapple · Cucumber · Ginger</p>
+            <div class="mb-2">
+              <span class="benefit-tag">🦠 Gut Health</span>
+              <span class="benefit-tag">✨ Skin Glow</span>
+              <span class="benefit-tag">🧬 Antioxidant</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="juice-card-price">From $8</span>
+              <span class="stock-counter" style="font-size:0.7rem; padding:4px 10px;"><div class="stock-dot"></div> 5 left</span>
+            </div>
+            <button class="btn-order-card" onclick="orderWhatsApp('Cabbage Citrus Glow')">🛒 Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tropic Like It's Hott -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="juice-card">
+          <div class="juice-card-img" style="background:linear-gradient(135deg,#fff0cc,#ffe08a);">
+            <span>🍍🌸</span>
+            <div class="juice-card-badge" style="background:#c96800;">Tropical 🔥</div>
+          </div>
+          <div class="juice-card-body">
+            <h4 class="juice-card-title">Tropic Like It's Hott</h4>
+            <p class="juice-card-ingredients">Pineapple · Passion Fruit · Cucumber · Ginger</p>
+            <div class="mb-2">
+              <span class="benefit-tag">🏖️ Tropical Vibes</span>
+              <span class="benefit-tag">💊 Digestive Aid</span>
+              <span class="benefit-tag">😎 Mood Lift</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="juice-card-price">From $8</span>
+              <span class="stock-counter" style="font-size:0.7rem; padding:4px 10px;"><div class="stock-dot"></div> 11 left</span>
+            </div>
+            <button class="btn-order-card" onclick="orderWhatsApp('Tropic Like It\'s Hott')">🛒 Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Morning Ignite (Bonus) -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="juice-card">
+          <div class="juice-card-img" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
+            <span>🍋🫚</span>
+            <div class="juice-card-badge" style="background:#c0392b;">New 🆕</div>
+          </div>
+          <div class="juice-card-body">
+            <h4 class="juice-card-title">Morning Ignite</h4>
+            <p class="juice-card-ingredients">Lemon · Ginger · Turmeric · Cayenne · Apple · Spring Water</p>
+            <div class="mb-2">
+              <span class="benefit-tag">🌅 Wake Up</span>
+              <span class="benefit-tag">🔥 Metabolism</span>
+              <span class="benefit-tag">🧠 Mental Clarity</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="juice-card-price">From $8</span>
+              <span class="stock-counter" style="font-size:0.7rem; padding:4px 10px;"><div class="stock-dot"></div> 8 left</span>
+            </div>
+            <button class="btn-order-card" onclick="orderWhatsApp('Morning Ignite')">🛒 Order via WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+
+    <!-- ===== SIZE PRICING TABLE ===== -->
+    <div class="row justify-content-center mt-5" id="pricing" data-aos="fade-up">
+      <div class="col-md-8 col-lg-6">
+        <div class="pricing-table">
+          <h5 class="text-center mb-3">📏 Choose Your Size</h5>
+          <div class="size-row"><span>150ml – Shot Size</span><strong>$8</strong></div>
+          <div class="size-row"><span>250ml – Single Serve</span><strong>$10</strong></div>
+          <div class="size-row"><span>330ml – Standard</span><strong>$12</strong></div>
+          <div class="size-row"><span>500ml – Big Boost</span><strong>$20</strong></div>
+          <div class="size-row"><span>750ml – Family Size</span><strong>$30</strong></div>
+          <div class="size-row"><span>1.5L – Bulk Order</span><strong>Upon Request</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUNDLES ===== -->
+<section class="section-pad bg-green-section" id="bundles">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-pill">💰 Bundle & Save</span>
+      <h2 class="section-title">Juice Bundles</h2>
+      <div class="divider-leaf"><hr/><span>🌿</span><hr/></div>
+      <p class="text-muted" style="max-width:540px; margin:0 auto;">Stock your fridge. Feed your glow. Our curated bundles give you more juice for less — the Sassy way to wellness. 🧃✨</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="bundle-card d-flex flex-column">
+          <h4 class="bundle-title">🌱 Starter Glow</h4>
+          <p class="bundle-save">Perfect for first-timers</p>
+          <ul class="list-unstyled mt-2 mb-3" style="color:#c8f5c8; font-size:0.9rem;">
+            <li>✔️ 3 x 330ml bottles</li>
+            <li>✔️ Choose any 3 flavors</li>
+            <li>✔️ Free wellness guide</li>
+          </ul>
+          <div class="bundle-price">$32</div>
+          <div class="bundle-save">Save $4 vs single pricing</div>
+          <button class="btn-bundle mt-3" onclick="orderWhatsApp('Starter Glow Bundle')">Order Bundle 🛒</button>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="bundle-card d-flex flex-column" style="background:linear-gradient(135deg,#8b4500,#c96800);">
+          <div class="bundle-popular">⭐ Most Popular</div>
+          <h4 class="bundle-title">🔥 Sassy 5-Pack</h4>
+          <p class="bundle-save">The community fave!</p>
+          <ul class="list-unstyled mt-2 mb-3" style="color:#ffe8c0; font-size:0.9rem;">
+            <li>✔️ 5 x 500ml bottles</li>
+            <li>✔️ Mix & match any flavors</li>
+            <li>✔️ Branded tote bag</li>
+            <li>✔️ Priority WhatsApp prep</li>
+          </ul>
+          <div class="bundle-price">$90</div>
+          <div class="bundle-save">Save $10 vs single pricing</div>
+          <button class="btn-bundle mt-3" onclick="orderWhatsApp('Sassy 5-Pack Bundle')">Order Bundle 🛒</button>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="bundle-card d-flex flex-column" style="background:linear-gradient(135deg,#0d3b4a,#1a6b5a);">
+          <h4 class="bundle-title">💎 Weekly Cleanse</h4>
+          <p class="bundle-save">7-day transformation</p>
+          <ul class="list-unstyled mt-2 mb-3" style="color:#c0f0e8; font-size:0.9rem;">
+            <li>✔️ 7 x 750ml bottles (one per day)</li>
+            <li>✔️ Curated detox sequence</li>
+            <li>✔️ Personal wellness check-in</li>
+            <li>✔️ Recipe booklet included</li>
+          </ul>
+          <div class="bundle-price">$185</div>
+          <div class="bundle-save">Save $25 vs single pricing</div>
+          <button class="btn-bundle mt-3" onclick="orderWhatsApp('Weekly Cleanse Bundle')">Order Bundle 🛒</button>
+        </div>
+      </div>
+    </div>
+    <!-- PayPal Section -->
+    <div class="text-center mt-5" data-aos="fade-up">
+      <p class="text-muted mb-3"><strong>💳 Prefer to pay now? Use PayPal for instant checkout:</strong></p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <button class="btn btn-warning fw-bold rounded-pill px-4" onclick="paypal('Starter Glow Bundle','32.00')">💳 Pay for Starter Bundle — $32</button>
+        <button class="btn btn-warning fw-bold rounded-pill px-4" onclick="paypal('Sassy 5-Pack Bundle','90.00')">💳 Pay for 5-Pack — $90</button>
+        <button class="btn btn-warning fw-bold rounded-pill px-4" onclick="paypal('Weekly Cleanse Bundle','185.00')">💳 Pay for Cleanse — $185</button>
+      </div>
+      <p class="text-muted mt-2" style="font-size:0.8rem;">After payment, WhatsApp us your receipt at <strong>758-486-9001</strong> to confirm your order 🙌</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY US ===== -->
+<section class="why-section section-pad" id="why-us">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-pill">💪 Why Sassy's</span>
+      <h2 class="section-title">Rooted in Wellness, Pressed with Love</h2>
+      <div class="divider-leaf"><hr/><span>🌿</span><hr/></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <span class="why-icon">🌿</span>
+          <h5>100% Natural</h5>
+          <p class="text-muted" style="font-size:0.82rem;">No fillers, no chemicals — just pure plants and fruit.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-card">
+          <span class="why-icon">🧊</span>
+          <h5>Cold-Pressed</h5>
+          <p class="text-muted" style="font-size:0.82rem;">Maximum nutrients locked in every drop.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-card">
+          <span class="why-icon">🫀</span>
+          <h5>Organ Support</h5>
+          <p class="text-muted" style="font-size:0.82rem;">Designed to restore and protect your liver & kidneys.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
+        <div class="why-card">
+          <span class="why-icon">⚡</span>
+          <h5>Energy That Lasts</h5>
+          <p class="text-muted" style="font-size:0.82rem;">No sugar crash — just clean, sustained vitality.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="320">
+        <div class="why-card">
+          <span class="why-icon">📦</span>
+          <h5>Fresh Daily</h5>
+          <p class="text-muted" style="font-size:0.82rem;">Pressed fresh each morning. Order before it's gone!</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="400">
+        <div class="why-card">
+          <span class="why-icon">💚</span>
+          <h5>Community Love</h5>
+          <p class="text-muted" style="font-size:0.82rem;">Built by wellness warriors, for wellness warriors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section section-pad" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-pill">💬 Real Results</span>
+      <h2 class="section-title text-white">The Sassy Glow Is Real</h2>
+      <div class="divider-leaf" style="--bs-body-color:#a0dca0;">
+        <hr style="border-color:rgba(255,255,255,0.2)"/><span>🌿</span><hr style="border-color:rgba(255,255,255,0.2)"/>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">👩🏾</div>
+          <div class="stars">★★★★★</div>
+          <p class="mt-2">"After just 5 days on the Weekly Cleanse, my energy is through the roof. My skin cleared up and I feel lighter than ever. Sassy's is not a juice bar — it's a lifestyle!"</p>
+          <div class="reviewer">— Kezia M., St. Lucia 🇱🇨</div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">👨🏿</div>
+          <div class="stars">★★★★★</div>
+          <p class="mt-2">"Tropic Like It's Hott is EVERYTHING. My gut stopped bloating after the first week. I order my 5-pack every Monday now. Doctor approved, Sassy approved!"</p>
+          <div class="reviewer">— Darnell P., Wellness Coach 🏋🏿</div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">👩🏽</div>
+          <div class="stars">★★★★★</div>
+          <p class="mt-2">"I was skeptical about the Cabbage Citrus Glow, but it tastes incredible and my complexion is literally glowing. You cannot put a price on how good you feel drinking Sassy's!"</p>
+          <div class="reviewer">— Marcia T., Fitness Enthusiast 💪</div>
+        </div>
+      </div>
+    </div>
+    <!-- Review counter -->
+    <div class="text-center mt-5" data-aos="fade-up">
+      <div class="d-inline-flex gap-4 flex-wrap justify-content-center">
+        <div class="text-center">
+          <div style="font-family:'Fredoka One',cursive; font-size:2.5rem; color:var(--orange);">200+</div>
+          <div style="color:#a0dca0; font-size:0.85rem;">Happy Customers</div>
+        </div>
+        <div class="text-center">
+          <div style="font-family:'Fredoka One',cursive; font-size:2.5rem; color:var(--orange);">4.9★</div>
+          <div style="color:#a0dca0; font-size:0.85rem;">Average Rating</div>
+        </div>
+        <div class="text-center">
+          <div style="font-family:'Fredoka One',cursive; font-size:2.5rem; color:var(--orange);">6</div>
+          <div style="color:#a0dca0; font-size:0.85rem;">Signature Blends</div>
+        </div>
+        <div class="text-center">
+          <div style="font-family:'Fredoka One',cursive; font-size:2.5rem; color:var(--orange);">100%</div>
+          <div style="color:#a0dca0; font-size:0.85rem;">Natural Ingredients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFER SECTION ===== -->
+<section class="offer-section" id="order" data-aos="zoom-in">
+  <div class="container">
+    <span class="hero-badge" style="background:rgba(255,255,255,0.25); color:#fff;">⏰ Limited Time Offer</span>
+    <h2>Get 10% Off Your First Order!</h2>
+    <p style="font-size:1.1rem; max-width:480px; margin: 12px auto;">Use code <strong style="background:rgba(255,255,255,0.3); padding:2px 12px; border-radius:8px;">SASSY10</strong> when you order via WhatsApp today. Fresh batches press out fast — don't miss the glow! 🌟</p>
+    <div class="offer-timer mb-4" id="offerTimer">23:59:30</div>
+    <a href="https://wa.me/17584869001?text=Hi%20Sassy's!%20I'd%20like%20to%20order%20using%20code%20SASSY10%20🧃" target="_blank" class="btn-offer">Claim My Discount Now 🎉</a>
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM SECTION ===== -->
+<section class="insta-section section-pad">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-pill">📸 @sassyswellnessjuicery</span>
+      <h2 class="section-title">Live Proof on Instagram</h2>
+      <div class="divider-leaf"><hr/><span>🌿</span><hr/></div>
+      <p class="text-muted">Tag us <strong>@sassyswellnessjuicery</strong> and get featured! ✨</p>
+    </div>
+    <div class="insta-grid" data-aos="fade-up">
+      <div class="insta-cell" style="background:linear-gradient(135deg,#ffe0b2,#ffcc80);" onclick="window.open('https://instagram.com/sassyswellnessjuicery','_blank')">
+        🍊<div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+      </div>
+      <div class="insta-cell" style="background:linear-gradient(135deg,#d4f5d4,#a5d6a7);" onclick="window.open('https://instagram.com/sassyswellnessjuicery','_blank')">
+        🥬<div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+      </div>
+      <div class="insta-cell" style="background:linear-gradient(135deg,#fce4ec,#f48fb1);" onclick="window.open('https://instagram.com/sassyswellnessjuicery','_blank')">
+        🍎<div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+      </div>
+      <div class="insta-cell" style="background:linear-gradient(135deg,#e8d5f5,#ce93d8);" onclick="window.open('https://instagram.com/sassyswellnessjuicery','_blank')">
+        🫐<div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+      </div>
+      <div class="insta-cell" style="background:linear-gradient(135deg,#fff9c4,#fff176);" onclick="window.open('https://instagram.com/sassyswellnessjuicery','_blank')">
+        🍋<div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+      </div>
+      <div class="insta-cell" style="background:linear-gradient(135deg,#b2ebf2,#80deea);" onclick="window.open('https://instagram.com/sassyswellnessjuicery','_blank')">
+        🥒<div class="insta-overlay"><i class="bi bi-instagram"></i></div>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="https://instagram.com/sassyswellnessjuicery" target="_blank" class="btn btn-outline-success rounded-pill fw-bold px-4">
+        <i class="bi bi-instagram me-2"></i>Follow @sassyswellnessjuicery
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta-section" data-aos="fade-up">
+  <div class="container">
+    <div style="font-size:4rem; margin-bottom:14px;">🥤✨🌿</div>
+    <h2>Ready for Your Glow-Up?</h2>
+    <p>Don't just dream of vibrant health — drink it. Your transformation is one bottle away. Order now and taste what it feels like to truly thrive. 💪</p>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a href="https://wa.me/17584869001?text=Hi%20Sassy's!%20I%20want%20to%20place%20an%20order%20🧃" target="_blank" class="btn-hero-main" style="font-size:1rem;">
+        <i class="bi bi-whatsapp me-2"></i>Order via WhatsApp
+      </a>
+      <a href="#juices" class="btn-hero-secondary" style="font-size:1rem;">Browse Full Menu →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact-section section-pad" id="contact">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-pill">📞 Get in Touch</span>
+      <h2 class="section-title">We're Ready When You Are</h2>
+      <div class="divider-leaf"><hr/><span>🌿</span><hr/></div>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="contact-card">
+          <span class="icon">📱</span>
+          <h5>WhatsApp Us</h5>
+          <p class="text-muted" style="font-size:0.9rem;">The fastest way to order, ask questions, and get your juice fix.</p>
+          <a href="https://wa.me/17584869001?text=Hi%20Sassy's!%20I'm%20interested%20in%20ordering%20🧃" target="_blank" class="btn btn-success rounded-pill fw-bold px-4 mt-2">
+            <i class="bi bi-whatsapp me-2"></i>Chat Now
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-card">
+          <span class="icon">💳</span>
+          <h5>Pay via PayPal</h5>
+          <p class="text-muted" style="font-size:0.9rem;">Pay securely online and send your receipt to confirm your order.</p>
+          <button class="btn btn-warning rounded-pill fw-bold px-4 mt-2" onclick="paypal('Custom Order','10.00')">
+            Pay with PayPal
+          </button>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="contact-card">
+          <span class="icon">📞</span>
+          <h5>Call or Text</h5>
+          <p class="text-muted" style="font-size:0.9rem;">Talk directly with us for bulk orders, custom requests, and events.</p>
+          <a href="tel:7584869001" class="btn btn-outline-success rounded-pill fw-bold px-4 mt-2">
+            758-486-9001
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Trust Badges -->
+    <div class="text-center mt-5" data-aos="fade-up">
+      <p class="text-muted mb-3 fw-bold">You're in safe hands 🙌</p>
+      <div>
+        <span class="trust-badge"><i class="bi bi-shield-check-fill text-success"></i> Secure Payments</span>
+        <span class="trust-badge"><i class="bi bi-patch-check-fill text-success"></i> Verified Business</span>
+        <span class="trust-badge"><i class="bi bi-heart-fill text-danger"></i> Handcrafted Daily</span>
+        <span class="trust-badge"><i class="bi bi-truck text-success"></i> Fast Delivery</span>
+        <span class="trust-badge"><i class="bi bi-star-fill text-warning"></i> 4.9★ Rated</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="footer-brand mb-2">🥤 Sassy's</div>
+        <p style="font-size:0.88rem; color:#8bc88b;">Drink Bold. Live Vibrant.<br/>Cold-pressed wellness juices crafted to detoxify your body and ignite your glow. Every bottle tells a story of health.</p>
+        <div class="mt-3">
+          <a href="https://wa.me/17584869001" target="_blank" class="social-icon whatsapp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://instagram.com/sassyswellnessjuicery" target="_blank" class="social-icon instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon tiktok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h5>Menu</h5>
+        <ul class="list-unstyled">
+          <li><a href="#juices">Our Juices</a></li>
+          <li><a href="#bundles">Bundles</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Our Juices</h5>
+        <ul class="list-unstyled">
+          <li><a href="#juices">🍎 Red Radiance</a></li>
+          <li><a href="#juices">🥕 Vital Amor</a></li>
+          <li><a href="#juices">🥬 Reset Ritual</a></li>
+          <li><a href="#juices">🫐 Cabbage Citrus Glow</a></li>
+          <li><a href="#juices">🍍 Tropic Like It's Hott</a></li>
+          <li><a href="#juices">🍋 Morning Ignite</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Order Now</h5>
+        <p style="font-size:0.88rem;">📱 <a href="https://wa.me/17584869001">758-486-9001</a></p>
+        <p style="font-size:0.88rem;">🌐 <a href="https://instagram.com/sassyswellnessjuicery">@sassyswellnessjuicery</a></p>
+        <a href="https://wa.me/17584869001?text=Hi%20Sassy's!%20I'd%20like%20to%20order%20🧃" target="_blank" class="btn btn-sm btn-success rounded-pill fw-bold px-3 mt-2">
+          <i class="bi bi-whatsapp me-1"></i>WhatsApp Order
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p class="mb-0" style="color:#5a8a5a;">© 2025 Sassy's Wellness Juicery · Drink Bold. Live Vibrant. 🌿 · <em>"Designed to detoxify your liver, kidneys, and overall body to give you that Sassy glow."</em></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== WHATSAPP FLOAT ===== -->
+<a href="https://wa.me/17584869001?text=Hi%20Sassy's!%20I'm%20interested%20in%20ordering%20🧃" target="_blank" class="wa-float" title="Order on WhatsApp">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- Bootstrap 5.3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  // ===== AOS INIT =====
+  AOS.init({ once: true, duration: 700, easing: 'ease-out-quad' });
+
+  // ===== THEME SWITCHER =====
+  function setTheme(t) {
+    document.body.className = 'theme-' + t;
+  }
+
+  // ===== WHATSAPP AUTO-REPLY ORDER =====
+  function orderWhatsApp(product) {
+    const msg = encodeURIComponent(
+      `Hi Sassy's Wellness Juicery! 🥤\n\nI'd like to order: *${product}*\n\nPlease let me know available sizes and your earliest delivery time. Thank you! 🌿`
+    );
+    window.open(`https://wa.me/17584869001?text=${msg}`, '_blank');
+  }
+
+  // ===== PAYPAL PRODUCT-SPECIFIC =====
+  function paypal(product, amount) {
+    const base = 'https://www.paypal.com/paypalme/sassyswellnessjuicery/';
+    const note = encodeURIComponent(`Sassy's Order: ${product}`);
+    window.open(`${base}${amount}`, '_blank');
+    // After opening, show confirmation tip
+    setTimeout(() => {
+      alert(`💳 PayPal opened for: ${product} ($${amount})\n\nAfter payment, please WhatsApp your receipt to 758-486-9001 to confirm your order. Thank you! 🧃`);
+    }, 800);
+  }
+
+  // ===== COUNTDOWN TIMER =====
+  function startTimer() {
+    const el = document.getElementById('offerTimer');
+    if (!el) return;
+    let totalSecs = 23 * 3600 + 59 * 60 + 30;
+    setInterval(() => {
+      totalSecs = Math.max(0, totalSecs - 1);
+      const h = String(Math.floor(totalSecs / 3600)).padStart(2,'0');
+      const m = String(Math.floor((totalSecs % 3600) / 60)).padStart(2,'0');
+      const s = String(totalSecs % 60).padStart(2,'0');
+      el.textContent = `${h}:${m}:${s}`;
+    }, 1000);
+  }
+  startTimer();
+
+  // ===== STOCK COUNTER ANIMATION =====
+  const stockNums = [14, 9, 12, 7, 5, 11, 8];
+  let idx = 0;
+  setInterval(() => {
+    const el = document.getElementById('stock-count');
+    if (el && stockNums[idx] > 0) {
+      stockNums[idx] = Math.max(0, stockNums[idx] - Math.floor(Math.random() * 1));
+    }
+    idx = (idx + 1) % stockNums.length;
+  }, 8000);
+
+  // ===== SMOOTH SCROLL =====
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
